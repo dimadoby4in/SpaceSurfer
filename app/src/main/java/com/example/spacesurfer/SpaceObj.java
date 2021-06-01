@@ -9,26 +9,26 @@ import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 public class SpaceObj {
-    protected float x; // координаты
+    protected float x; 
     protected float y;
-    protected float size; // размер
-    protected float speed; // скорость
-    protected int bitmapId; // id картинки
-    protected Bitmap bitmap; // картинка
+    protected float size; 
+    protected float speed; 
+    protected int bitmapId;
+    protected Bitmap bitmap; 
 
 
 
-    void init(Context context) { // сжимается картинка до нужных размеров
+    void init(Context context) { 
         Bitmap cBitmap = BitmapFactory.decodeResource(context.getResources(), bitmapId);
         bitmap = Bitmap.createScaledBitmap(
                 cBitmap, (int)(size * SpaceView.unitW), (int)(size * SpaceView.unitH), false);
         cBitmap.recycle();
     }
 
-    void update(){ // тут будут вычисляться новые координаты
+    void update(){ 
     }
 
-    void drow(Paint paint, Canvas canvas){ // рисуем картинку
+    void drow(Paint paint, Canvas canvas){ 
         canvas.drawBitmap(bitmap, x*SpaceView.unitW, y*SpaceView.unitH, paint);
     }
 }
