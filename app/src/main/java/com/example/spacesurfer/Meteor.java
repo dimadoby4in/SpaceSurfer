@@ -5,9 +5,9 @@ import android.content.Context;
 import java.util.Random;
 
 public class Meteor extends SpaceObj {
-    private int radius = 2; // радиус
-    private float minSpeed = (float) 0.1; // минимальная скорость
-    private float maxSpeed = (float) 0.4; // максимальная скорость
+    private int radius = 2; 
+    private float minSpeed = (float) 0.1;
+    private float maxSpeed = (float) 0.4; 
     public Meteor(Context context) {
         Random random = new Random();
 
