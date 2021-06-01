@@ -14,16 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpaceView extends SurfaceView implements Runnable{
-    public static int maxX = 20; // размер по горизонтали
-    public static int maxY = 28; // размер по вертикали
-    public static float unitW = 0; // пикселей в юните по горизонтали
-    public static float unitH = 0; // пикселей в юните по вертикали
+    public static int maxX = 20; 
+    public static int maxY = 28; 
+    public static float unitW = 0; 
+    public static float unitH = 0; 
 
     private SoundPool sounds;
     private int sExplosion;
 
-    private List<Meteor> meteors = new ArrayList<>(); // тут будут харанится астероиды
-    private final int Meteors_INTERVAL = 50; // время через которое появляются астероиды (в итерациях)
+    private List<Meteor> meteors = new ArrayList<>(); 
+    private final int Meteors_INTERVAL = 50; 
     private int currentTime = 0;
 
     private boolean firstTime = true;
@@ -73,14 +73,14 @@ public class SpaceView extends SurfaceView implements Runnable{
     private void draw() {
         if (surfaceHolder.getSurface().isValid()) {
 
-            if(firstTime){ // инициализация при первом запуске
+            if(firstTime){ 
                 firstTime = false;
-                unitW = surfaceHolder.getSurfaceFrame().width()/maxX; // вычисляем число пикселей в юните
+                unitW = surfaceHolder.getSurfaceFrame().width()/maxX; 
                 unitH = surfaceHolder.getSurfaceFrame().height()/maxY;
                 ship = new Ship(getContext());
             }
 
-            canvas = surfaceHolder.lockCanvas(); // закрываем canvas
+            canvas = surfaceHolder.lockCanvas();
 
             canvas.drawColor(Color.BLACK);
 
@@ -90,11 +90,11 @@ public class SpaceView extends SurfaceView implements Runnable{
                 meteor.drow(paint, canvas);
             }
 
-            surfaceHolder.unlockCanvasAndPost(canvas); // открываем canvas
+            surfaceHolder.unlockCanvasAndPost(canvas); 
         }
     }
 
-    private void control() { // пауза на 20 миллисекунд
+    private void control() { 
         try {
             gameThread.sleep(20);
         } catch (InterruptedException e) {
@@ -102,10 +102,10 @@ public class SpaceView extends SurfaceView implements Runnable{
         }
 
     }
-    private void checkCollision(){ //проверяем есть ли столкновения
+    private void checkCollision(){
         for (Meteor meteor : meteors) {
-            if(meteor.isCollision(ship.x, ship.y, ship.size)){ // игрок проиграл
-                sounds.play(sExplosion, 1.0f, 1.0f, 0, 0, 1.5f);//проигрыш звука
+            if(meteor.isCollision(ship.x, ship.y, ship.size)){ 
+                sounds.play(sExplosion, 1.0f, 1.0f, 0, 0, 1.5f);
                 gameRunning = false;
 
 
@@ -113,7 +113,7 @@ public class SpaceView extends SurfaceView implements Runnable{
         }
     }
 
-    private void checkIfNewAsteroid(){ // каждые 50 операций добавляем новый астероид
+    private void checkIfNewAsteroid(){ 
         if(currentTime >= Meteors_INTERVAL){
             Meteor meteor = new Meteor(getContext());
             meteors.add(meteor);
