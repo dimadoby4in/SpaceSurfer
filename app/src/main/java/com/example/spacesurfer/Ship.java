@@ -4,17 +4,16 @@ import android.content.Context;
 
 public class Ship extends SpaceObj {
     public Ship(Context context) {
-        bitmapId = R.drawable.spaceship; // определяем начальные параметры
+        bitmapId = R.drawable.spaceship;
         size = 5;
         x = 7;
         y = SpaceView.maxY - size - 1;
-        speed = (float) 0.24;
-
-        init(context); // инициализируем корабль
+        speed = (float) 0.3;
+        init(context);
     }
 
     @Override
-    public void update() { // перемещаем корабль в зависимости от нажатой кнопки
+    public void update() { 
         if(MainActivity.isLeftPressed && x >= 0){
             x -= speed;
         }
