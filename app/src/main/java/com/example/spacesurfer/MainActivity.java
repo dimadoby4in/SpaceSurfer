@@ -14,8 +14,8 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
-    public static boolean isLeftPressed = false; // нажата левая кнопка
-    public static boolean isRightPressed = false;// нажата правая кнопка
+    public static boolean isLeftPressed = false; 
+    public static boolean isRightPressed = false;
 
 
 
@@ -29,11 +29,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         setContentView(R.layout.activity_main);
         startService(new Intent(this, MyService.class));
 
-        SpaceView gameView = new SpaceView(this); // создаём gameView
+        SpaceView gameView = new SpaceView(this); 
         getWindow().setBackgroundDrawableResource(R.drawable.space);
-        LinearLayout gameLayout = (LinearLayout) findViewById(R.id.gameLayout); // находим gameLayout
-        gameLayout.addView(gameView); // и добавляем в него gameView
-        Button leftButton = (Button) findViewById(R.id.leftButton); // находим кнопки
+        LinearLayout gameLayout = (LinearLayout) findViewById(R.id.gameLayout); 
+        gameLayout.addView(gameView); 
+        Button leftButton = (Button) findViewById(R.id.leftButton);
         Button rightButton = (Button) findViewById(R.id.rightButton);
         leftButton.setOnTouchListener(this);
         rightButton.setOnTouchListener(this);
@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
 
         public boolean onTouch(View button, MotionEvent motion) {
-        switch(button.getId()) { // определяем какая кнопка
+        switch(button.getId()) { 
             case R.id.leftButton:
-                switch (motion.getAction()) { // определяем нажата или отпущена
+                switch (motion.getAction()) { 
                     case MotionEvent.ACTION_DOWN:
                         isLeftPressed = true;
                         break;
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 }
                 break;
             case R.id.rightButton:
-                switch (motion.getAction()) { // определяем нажата или отпущена
+                switch (motion.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         isRightPressed = true;
                         break;
